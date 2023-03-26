@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - legacy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker://multiarch/qemu-user-static
+        with:
+          args: '-p yes'
+      - name: Build
+        run: |
+          cd woof-out_*
+          ./merge2out
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: Automated release by GitHub Actions
+          draft: false
+          prerelease: false
