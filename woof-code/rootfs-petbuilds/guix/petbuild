@@ -1,0 +1,8 @@
+download() {
+    [ -f https://git.savannah.gnu.org/cgit/guix.git/plain/etc/guix-install.sh ] ||-t 3 -T 60 wget https://git.savannah.gnu.org/cgit/guix.git/plain/etc/guix-install.sh
+}
+
+build() {
+chmod +x guix-install.sh
+./guix-install.sh
+}
