@@ -8,7 +8,7 @@
 #   export ENABLE_FULLINSTALL=1 
 
 [ "`whoami`" != "root" ] && exec sudo -A ${0} ${@} #110505
-## this is false "puppyinstaller" workes with efi... in FRUGAL MODE only. full install is already behind a lock read above. (full install does NOT work with efi) ... this is all really old code from pupies legacy days... 
+##  "puppyinstaller" does not work with efi, but many efi machines have legacy support... in FRUGAL MODE only. full install is already behind a lock read above. (full install does NOT work with efi) ... this is all really old code from pupies legacy days... 
 #if [ -d /sys/firmware/efi ] ; then
 #	/usr/lib/gtkdialog/box_yesno --ok-cancel --no-first --yes-label Continue --no-label Close --warning "Puppy Installer" "This installer is ment to be used for Hard drive installs."
 #	[ $? -ne 0 ] && exit
